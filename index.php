@@ -17,6 +17,8 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 Buon lavoro! :lucchetto: :php: :elefante: -->
 
 <?php
+session_start();
+
 include __DIR__ . "/partials/functions.php";
 // Chars allowed
 $allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%&+=@#";
@@ -25,7 +27,13 @@ $allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!
 $passLength = $_GET['pass-length'] ?? "";
 
 // Password crteation by func passGenerate call
-$passCreated = passGenerate($passLength, $allowedChars);
+if (!empty($passLength)) {
+    $_SESSION["password"] = passGenerate($passLength, $allowedChars);
+    var_dump($_SESSION["password"]);
+    if ($_SESSION['password']) {
+        header("Location: ./result.php");
+    }
+}
 
 // var_dump($allowedChars);
 // var_dump($passLength);
@@ -54,21 +62,6 @@ $passCreated = passGenerate($passLength, $allowedChars);
         <h1 class="text-center">Strong Password Generator</h1>
 
         <h2 class="text-center">Genera una password sicura</h2>
-
-        <?php
-        if ($passLength) {
-            echo ('<div class="alert alert-success">' .
-                $passCreated .
-                '</div>');
-        } else {
-            echo ('<div class="alert alert-info">
-            Inserire la lunghezza della password e cliccare -Invio-
-            </div>');
-        }
-        ?>
-        <!-- <div class="alert alert-info">
-            Nessun parametro valido inserito
-        </div> -->
 
         <div class="user-interaction rounded p-3">
             <form action="index.php" method="GET">
