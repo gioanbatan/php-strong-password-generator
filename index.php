@@ -17,14 +17,19 @@ Dare all’utente anche la possibilità di permettere o meno la ripetizione di c
 Buon lavoro! :lucchetto: :php: :elefante: -->
 
 <?php
+include __DIR__ . "/partials/functions.php";
 // Chars allowed
-$allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%^&*_-+=@~#|\<>/";
+$allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%&+=@#";
 
 // User password length
 $passLength = $_GET['pass-length'] ?? "";
 
-var_dump($allowedChars);
-var_dump($passLength);
+// Password crteation by func passGenerate call
+$passCreated = passGenerate($passLength, $allowedChars);
+
+// var_dump($allowedChars);
+// var_dump($passLength);
+
 ?>
 
 <!DOCTYPE html>
@@ -50,9 +55,20 @@ var_dump($passLength);
 
         <h2 class="text-center">Genera una password sicura</h2>
 
-        <div class="alert alert-info">
+        <?php
+        if ($passLength) {
+            echo ('<div class="alert alert-success">' .
+                $passCreated .
+                '</div>');
+        } else {
+            echo ('<div class="alert alert-info">
+            Inserire la lunghezza della password e cliccare -Invio-
+            </div>');
+        }
+        ?>
+        <!-- <div class="alert alert-info">
             Nessun parametro valido inserito
-        </div>
+        </div> -->
 
         <div class="user-interaction rounded p-3">
             <form action="index.php" method="GET">
