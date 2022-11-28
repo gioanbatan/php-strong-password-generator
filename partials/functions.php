@@ -5,10 +5,11 @@ function passGenerate($length, $chars)
     $password = "";
     //Cicle password length
     for ($i = 0; $i < $length; $i++) {
-        $randNumb = rand(0, strlen($chars) - 1);
-        $charToAdd = $chars[$randNumb];
-        // var_dump($randNumb);
-        // var_dump($charToAdd);
+        $randType = rand(0, 2);
+        $randNumb = rand(0, strlen($chars[$randType]) - 1);
+        $charToAdd = $chars[$randType][$randNumb];
+        var_dump($randNumb);
+        var_dump($charToAdd);
         $password .= $charToAdd;
     }
     // Return complete password

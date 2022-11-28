@@ -21,17 +21,19 @@ session_start();
 
 include __DIR__ . "/partials/functions.php";
 // Chars allowed
-$allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%&+=@#";
+// $allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%&+=@#";
+
+$allowedChars = ["abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ", "0123456789", "!?$%&+=@#"];
 
 // User password length
 $passLength = $_GET['pass-length'] ?? "";
 
-// Password crteation by func passGenerate call
+// Password creation by func passGenerate call
 if (!empty($passLength)) {
     $_SESSION["password"] = passGenerate($passLength, $allowedChars);
     var_dump($_SESSION["password"]);
     if ($_SESSION['password']) {
-        header("Location: ./result.php");
+        // header("Location: ./result.php");
     }
 }
 
