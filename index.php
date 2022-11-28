@@ -16,6 +16,16 @@ Gestire ulteriori parametri per la password: quali caratteri usare fra numeri, l
 Dare all’utente anche la possibilità di permettere o meno la ripetizione di caratteri uguali.
 Buon lavoro! :lucchetto: :php: :elefante: -->
 
+<?php
+// Chars allowed
+$allowedChars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!?$%^&*_-+=@~#|\<>/";
+
+// User password length
+$passLength = $_GET['pass-length'] ?? "";
+
+var_dump($allowedChars);
+var_dump($passLength);
+?>
 
 <!DOCTYPE html>
 <html lang="it">
@@ -102,10 +112,6 @@ Buon lavoro! :lucchetto: :php: :elefante: -->
                 <button class="btn btn-secondary" type="reset">Annulla</button>
             </form>
         </div>
-    </div>
-    </div>
-
-    <div></div>
     </div>
 </body>
 
