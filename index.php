@@ -18,12 +18,15 @@ Buon lavoro! :lucchetto: :php: :elefante: -->
 
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
 
     <!-- Style -->
     <link rel="stylesheet" href="css/style.css">
@@ -32,10 +35,78 @@ Buon lavoro! :lucchetto: :php: :elefante: -->
 </head>
 
 <body>
-    <?php
-    echo "HELLO";
-    ?>
-    hello
+    <div class="container">
+        <h1 class="text-center">Strong Password Generator</h1>
+
+        <h2 class="text-center">Genera una password sicura</h2>
+
+        <div class="alert alert-info">
+            Nessun parametro valido inserito
+        </div>
+
+        <div class="user-interaction rounded p-3">
+            <form action="index.php" method="GET">
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <label for="pass-length">Lunghezza password:</label>
+                    </div>
+                    <div class="col-4">
+                        <div class="input-group w-50">
+                            <input class="form-control" type="text" id="pass-length" name="pass-length" value="8">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-8">
+                        <p>Consenti ripetizioni di più caratteri:</p>
+                    </div>
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="repeat" name="repeat" value="true">
+                            <label class="form-check-label" for="repeat">Sì</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" id="repeat" name="repeat" value="false">
+                            <label class="form-check-label" for="repeat">No</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-8">
+
+                    </div>
+
+                    <div class="col-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="letters" name="letters" value="letters">
+                            <label class="form-check-label" for="letters">Lettere</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="numbers" name="numbers" value="numbers">
+                            <label class="form-check-label" for="numbers">Numeri</label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="simbols" name="simbols" vale="simbols">
+                            <label class="form-check-label" for="simbols">Simboli</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" type="submit">Invia</button>
+
+                <button class="btn btn-secondary" type="reset">Annulla</button>
+            </form>
+        </div>
+    </div>
+    </div>
+
+    <div></div>
+    </div>
 </body>
 
 </html>
